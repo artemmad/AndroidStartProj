@@ -11,25 +11,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.second_layout);
 
-        ConstraintLayout constraintlayout = new ConstraintLayout(this);
-        TextView textView = new TextView(this);
-        textView.setText("Hello Android!");
-        textView.setTextSize(26);
 
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        TextView textView = (TextView) findViewById(R.id.header);
 
-        layoutParams.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
+        textView.setText("Hello from Java");
 
-        textView.setLayoutParams(layoutParams);
+//
+//        ConstraintLayout constraintlayout = new ConstraintLayout(this);
+//        TextView textView = new TextView(this);
+//        textView.setText("Hello Android!");
+//        textView.setTextSize(26);
+//
+//        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(
+//                ConstraintLayout.LayoutParams.WRAP_CONTENT,
+//                ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//
+//        layoutParams.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+//        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+//        layoutParams.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
+//
+//        textView.setLayoutParams(layoutParams);
+//
+//        constraintlayout.addView(textView);
 
-        constraintlayout.addView(textView);
-
-        setContentView(constraintlayout);
+        //setContentView(constraintlayout);
     }
 }
