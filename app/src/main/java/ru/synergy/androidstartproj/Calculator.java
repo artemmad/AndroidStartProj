@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class Calculator extends AppCompatActivity {
         final Button calculate = (Button) findViewById(R.id.calc);
 
 
+
         //Context training
 //        TextView textView = new TextView(this);
 //        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),);
@@ -43,11 +45,19 @@ public class Calculator extends AppCompatActivity {
         ////
 
 
+
+        ////  intent  - посылка
+
+
+
+        //
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(LogcatTag, "Button have been pushed");
                 calcuclateAnswe();
+                Intent i = new Intent(Calculator.this, MainActivity.class);// написать письмо
+                startActivity(i); // отправить его
             }
         });
     }
@@ -90,6 +100,10 @@ public class Calculator extends AppCompatActivity {
         RadioButton sub = (RadioButton) findViewById(R.id.subtract);
         RadioButton multiply = (RadioButton) findViewById(R.id.multiple);
         RadioButton divide = (RadioButton) findViewById(R.id.divide);
+
+        numOne.setText("0");
+        numTwo.setText("0");
+        add.setChecked(true);
 
         TextView answer = (TextView) findViewById(R.id.result);
 
