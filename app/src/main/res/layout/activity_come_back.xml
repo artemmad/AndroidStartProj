@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ComeBackActivity">
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="266dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="116dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Type here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/push"
+        android:layout_width="127dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="52dp"
+        android:text="Push"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

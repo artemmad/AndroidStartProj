@@ -1,17 +1,37 @@
 package ru.synergy.androidstartproj;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
+    ActivityResultLauncher<Intent> ComeBackActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == Activity.RESULT_OK)
+                    {
+                       Intent intent = result.getData();
+                       tv.setText(intent.getStringExtra("tv"));
+                    }
+                }
+            }
+
+    );
+
+
 
     private static final int REQ_C = 1;
     EditText et;
@@ -33,11 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btn.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
-
-
     }
-
-
 
 
     @Override
@@ -54,19 +70,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 i.putExtra("et", eText);
                 startActivity(i);
                 break;
-//            case R.id.button3:
-//                i = new Intent(this, ComeBackActivity.class);
-//                startActivityForResult(i, REQ_C);
+           case R.id.button3:
+
+               ComeBackActivityResultLauncher.launch(new Intent(this, ComeBackActivity.class));
+               break;
         }
     }
-
-//    @Override
-//    public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case RESULT_OK:
-//                tv.setText(data.getStringExtra("et"));
-//        }
-//        return false;
-//    }
 }
